@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Sheet</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/tables/ -->
+    <table class="table" id="survey-table" style="width:100%">
+        <!-- the table head -->
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Prefix</th>
+                <th scope="col">Date of birth</th>
+                <th scope="col">Email</th>
+                <th scope="col">Education</th>
+                <th scope="col">About</th>
+            </tr>
+        </thead>
+        <!-- table body -->
+        <tbody>
+            <!-- read every line in the file -->
+            {% for registrant in inputed_survey %}
+                <tr>
+                    <!-- read every element in the line -->
+                    {% for infor in registrant %}
+                    <td>
+                        <!-- input the line into the table in sheet.html -->
+                        {{ infor }}
+                    </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#survey-table').DataTable({
+                order: [[0, 'asc']]
+            });
+        });
+    </script>
+{% endblock %}
