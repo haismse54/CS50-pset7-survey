@@ -1,3 +1,4 @@
+# @app.after_request, @app.route("/", methods=["GET"]) and @app.route("/form", methods=["GET"]) were written by CS50
 import cs50
 import csv
 
